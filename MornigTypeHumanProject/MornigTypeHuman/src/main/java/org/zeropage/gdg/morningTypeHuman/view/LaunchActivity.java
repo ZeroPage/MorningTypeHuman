@@ -1,8 +1,11 @@
-package org.zeropage.gdg.morningTypeHuman;
+package org.zeropage.gdg.morningTypeHuman.view;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+
+import org.zeropage.gdg.morningTypeHuman.R;
+import org.zeropage.gdg.morningTypeHuman.controller.LaunchActivityController;
 
 public class LaunchActivity extends Activity {
 
@@ -10,6 +13,8 @@ public class LaunchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
+
+        LaunchActivityController controller = new LaunchActivityController(this);
     }
 
 
