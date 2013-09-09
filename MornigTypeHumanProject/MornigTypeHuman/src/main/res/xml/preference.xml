@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title = "알람">
+        <RingtonePreference
+                android:key="ringtone"
+                android:title="알람음 설정"
+                android:summary="알람음을 설정합니다." />
+    </PreferenceCategory>
+    <PreferenceCategory android:title = "기타">
+        <Preference
+                android:key = "stats"
+                android:title = "통계 보기"
+                android:summary="통계를 봅니다." />
+        <Preference
+                android:key = "credits"
+                android:title = "제작자"
+                android:summary = "제작자 정보를 봅니다." />
+    </PreferenceCategory>
+</PreferenceScreen>
