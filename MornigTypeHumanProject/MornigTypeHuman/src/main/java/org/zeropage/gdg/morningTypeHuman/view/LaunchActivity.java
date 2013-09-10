@@ -1,5 +1,6 @@
 package org.zeropage.gdg.morningTypeHuman.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -15,6 +16,7 @@ public class LaunchActivity extends Activity {
         setContentView(R.layout.activity_launch);
 
         LaunchActivityController controller = new LaunchActivityController(this);
+        startActivity(new Intent(this, MapActivity.class)); //ToDo remove this line later.
     }
 
 
