@@ -1,6 +1,5 @@
 package org.zeropage.gdg.morningTypeHuman.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -27,6 +26,7 @@ public class SettingActivity extends PreferenceActivity {
             public boolean onPreferenceClick(Preference preference) {
             //Intent intent = new Intent(SettingActivity.this, StatsActivity.class);
             //startActivity(intent);
+            //ToDo make StatsActivity and then remove this line and uncomment 2 lines above it.
 
             return false;
             }
@@ -37,6 +37,7 @@ public class SettingActivity extends PreferenceActivity {
             public boolean onPreferenceClick(Preference preference) {
             //Intent intent = new Intent(SettingActivity.this, CreditsActivity.class);
             //startActivity(intent);
+                //ToDo make CreditsActivity and then remove this line and uncomment 2 lines above it.
 
             return false;
             }
