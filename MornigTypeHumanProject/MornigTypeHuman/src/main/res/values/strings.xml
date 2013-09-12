@@ -6,5 +6,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_setting">SettingActivity</string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_alarm_add">MainActivity</string>
+    <string name="title_activity_alarm_list">MainActivity</string>
+    <string name="title_activity_alarm_result">MainActivity</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>
