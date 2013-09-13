@@ -1,5 +1,6 @@
 package org.zeropage.gdg.morningTypeHuman.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -35,9 +36,8 @@ public class SettingActivity extends PreferenceActivity {
         creditsPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-            //Intent intent = new Intent(SettingActivity.this, CreditsActivity.class);
-            //startActivity(intent);
-                //ToDo make CreditsActivity and then remove this line and uncomment 2 lines above it.
+            Intent intent = new Intent(SettingActivity.this, CreditsActivity.class);
+            startActivity(intent);
 
             return false;
             }

@@ -31,7 +31,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <receiver
-            android:name="org.zeropage.gdg.morningTypeHuman.model.AlarmServiece"
+            android:name=".model.AlarmService"
             android:process=":remote" />
 
         <meta-data

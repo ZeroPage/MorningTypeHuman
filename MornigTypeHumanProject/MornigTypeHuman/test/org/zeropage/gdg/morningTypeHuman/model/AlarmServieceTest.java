@@ -25,7 +25,7 @@ public class AlarmServieceTest extends ActivityInstrumentationTestCase2<LaunchAc
     public void testAlarm() throws Exception {
         fail(); // 이런건 테스트를 어떻게 짜야할지 모르겠다. 일단 없어도 짤 수 있을 것 같으니 그냥 간다!.
         // given
-        AlarmServiece as = new AlarmServiece();
+        AlarmService as = new AlarmService();
 
         // when
 

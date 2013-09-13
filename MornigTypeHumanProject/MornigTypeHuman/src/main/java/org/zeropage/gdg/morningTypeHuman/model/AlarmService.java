@@ -15,7 +15,7 @@ import java.util.Calendar;
 /**
  * Created by rino0601 on 13. 9. 9..
  */
-public class AlarmServiece extends BroadcastReceiver {
+public class AlarmService extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent fromIntent) {
@@ -32,35 +32,80 @@ public class AlarmServiece extends BroadcastReceiver {
     public void enableAlarm(Context context, AlarmInfo newAlarm) throws IOException {
         // AlarmManager 호출
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        int dayDifference;
 
         // 알람을 받을 시간을, 넘겨 받은 정보를 가지고 설정.
 
         Calendar cal_alarm = Calendar.getInstance();
         Calendar cal_now = Calendar.getInstance();
+
         cal_alarm.set(Calendar.HOUR_OF_DAY, newAlarm.hour);//set the alarm time
         cal_alarm.set(Calendar.MINUTE, newAlarm.minute);
         cal_alarm.set(Calendar.SECOND, 0);
-        while (cal_alarm.before(cal_now)) {//if its in the past increment
-            cal_alarm.add(Calendar.DATE, 1);
+
+
+
+        if (cal_alarm.before(cal_now)) {//if its in the past increment
+            cal_now.add(Calendar.DATE, 1);
         }
+
+        dayDifference = getDayDifference(cal_now.DAY_OF_WEEK, newAlarm.dayOfWeek);
+
         //SET YOUR AlarmManager here
         PendingIntent sender = getPendingIntent(context, newAlarm);
-        am.set(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(), sender);
+        am.set(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis() + dayDifference * 24 * 60 * 60 * 1000, sender);
         // 알람 매니저에 알람을 등록
 //        am.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),(7*24*60*60*1000),sender);
 //        // ㄴ '등록 시점'으로 부터 일주일 동안 반복하는 코드 완성.
     }
 
+    public void disableAlarm(Context context, AlarmInfo newAlarm) throws IOException {
+        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        am.cancel(getPendingIntent(context, newAlarm));
+    }
+
     private PendingIntent getPendingIntent(Context context, AlarmInfo newAlarm) {
-        Intent intent = new Intent(context, AlarmServiece.class);
+        Intent intent = new Intent(context, AlarmService.class);
         intent.putExtra(AlarmInfo.intentKey, newAlarm);
         intent.setAction("ACTION_AS_KEY_" + newAlarm.name); // 각 AlarmInfo를 구분하기 위한 키.
         Log.i("asdf", "ACTION_AS_KEY_" + newAlarm.name);
         return PendingIntent.getBroadcast(context, 0, intent, 0);
     }
 
-    public void disableAlarm(Context context, AlarmInfo newAlarm) throws IOException {
-        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        am.cancel(getPendingIntent(context, newAlarm));
+    private int getDayDifference(int dayOfWeekToday, DayOfWeek dayOfWeek) {
+        int count = 0;
+        while(count < 7) {
+            if(dayOfWeekToday == 1) {
+                if(dayOfWeek.sun) {
+                    return count;
+                }
+            } else if(dayOfWeekToday == 2) {
+                if(dayOfWeek.mon) {
+                    return count;
+                }
+            } else if(dayOfWeekToday == 3) {
+                if(dayOfWeek.tue) {
+                    return count;
+                }
+            } else if(dayOfWeekToday == 4) {
+                if(dayOfWeek.wed) {
+                    return count;
+                }
+            } else if(dayOfWeekToday == 5) {
+                if(dayOfWeek.thu) {
+                    return count;
+                }
+            } else if(dayOfWeekToday == 6) {
+                if(dayOfWeek.fri) {
+                    return count;
+                }
+            } else if(dayOfWeekToday == 7) {
+                if(dayOfWeek.sat) {
+                    return count;
+                }
+            }
+        count++;
+        }
+        return 0;
     }
 }

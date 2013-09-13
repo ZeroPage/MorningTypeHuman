@@ -30,5 +30,6 @@ public class AlarmTimePicker extends TimePicker{
 
     public void init(OnTimeChangedListener controller) {
         setOnTimeChangedListener(controller);
+        controller.onTimeChanged(this, getCurrentHour(), getCurrentMinute());
     }
 }

@@ -2,6 +2,8 @@ package org.zeropage.gdg.morningTypeHuman.controller;
 
 import android.text.Editable;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -12,24 +14,27 @@ import com.google.android.gms.maps.model.CameraPosition;
 import org.zeropage.gdg.morningTypeHuman.R;
 import org.zeropage.gdg.morningTypeHuman.model.AlarmInfo;
 import org.zeropage.gdg.morningTypeHuman.model.AlarmInfoStorage;
-import org.zeropage.gdg.morningTypeHuman.model.AlarmServiece;
+import org.zeropage.gdg.morningTypeHuman.model.AlarmService;
+import org.zeropage.gdg.morningTypeHuman.model.DayOfWeek;
 import org.zeropage.gdg.morningTypeHuman.view.AlarmAddActivity;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by rino0601 on 13. 9. 13..
  */
-public class AlarmAddActivityController implements TimePicker.OnTimeChangedListener, GoogleMap.OnCameraChangeListener, View.OnClickListener {
+public class AlarmAddActivityController implements TimePicker.OnTimeChangedListener, GoogleMap.OnCameraChangeListener, View.OnClickListener, CheckBox.OnCheckedChangeListener {
     private AlarmAddActivity activity;
     private int hour;
     private int minute;
     private double latitude;
     private double longitude;
+    private boolean isAlarmOn;
+    private DayOfWeek dayOfWeek;
 
     public AlarmAddActivityController(AlarmAddActivity activity) {
         this.activity = activity;
+        dayOfWeek = new DayOfWeek();
     }
 
     @Override
@@ -56,34 +61,54 @@ public class AlarmAddActivityController implements TimePicker.OnTimeChangedListe
             return;
         }
         String name = et.toString();
-
-
-        ArrayList<AlarmInfo> load;
-        try {
-            load = AlarmInfoStorage.load();
-        } catch (IOException e) {
-            Toast.makeText(activity, "FATAL_ERROR:기존 알람 목록을 불러오는데 실패.", Toast.LENGTH_LONG).show();
+        if (!(dayOfWeek.mon || dayOfWeek.tue || dayOfWeek.wed || dayOfWeek.thu || dayOfWeek.fri || dayOfWeek.sat || dayOfWeek.sun)) {
+            Toast.makeText(activity, "요일을 선택해 주세요.", Toast.LENGTH_LONG).show();
             return;
         }
 
-        AlarmInfo newAlarm = new AlarmInfo(name, hour, minute, longitude, latitude);
-        load.add(newAlarm);
+        AlarmInfo newAlarm = new AlarmInfo(name, hour, minute, longitude, latitude, isAlarmOn, dayOfWeek);
         try {
-            AlarmInfoStorage.save(load);
+            AlarmInfoStorage.saveAlarmInfo(newAlarm);
         } catch (IOException e) {
             Toast.makeText(activity, "FATAL_ERROR:새 알람 목록을 저장하는데 실패.", Toast.LENGTH_LONG).show();
             return;
         }
-        activateAlarm(newAlarm);
+        if(isAlarmOn) {
+            activateAlarm(newAlarm);
+        }
         activity.finish();
     }
 
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        int viewId = buttonView.getId();
+        if(viewId == R.id.checkBoxMon) {
+            dayOfWeek.mon = isChecked;
+        } else if(viewId == R.id.checkBoxTue) {
+            dayOfWeek.tue = isChecked;
+        } else if(viewId == R.id.checkBoxWed) {
+            dayOfWeek.wed = isChecked;
+        } else if(viewId == R.id.checkBoxThu) {
+            dayOfWeek.thu = isChecked;
+        } else if(viewId == R.id.checkBoxFri) {
+            dayOfWeek.fri = isChecked;
+        } else if(viewId == R.id.checkBoxSat) {
+            dayOfWeek.sat = isChecked;
+        } else if(viewId == R.id.checkBoxSun) {
+            dayOfWeek.sun = isChecked;
+        } else if(viewId == R.id.toggleButton) {
+            isAlarmOn = isChecked;
+        }
+    }
+
     private void activateAlarm(AlarmInfo newAlarm) {
-        AlarmServiece alarmServiece = new AlarmServiece();
+        AlarmService alarmService = new AlarmService();
         try {
-            alarmServiece.enableAlarm(activity, newAlarm);
+            alarmService.enableAlarm(activity, newAlarm);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 }

@@ -14,5 +14,7 @@ public class AlarmEditActivity extends FragmentActivity {
         setContentView(R.layout.activity_alarm_edit);
 
         AlarmEditActivityController controller = new AlarmEditActivityController(this);
+
+        controller.update();
     }
 }

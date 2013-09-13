@@ -8,8 +8,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 
 import org.zeropage.gdg.morningTypeHuman.R;
 import org.zeropage.gdg.morningTypeHuman.controller.AlarmAddActivityController;
+import org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox;
 import org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCreateButton;
 import org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmTimePicker;
+import org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmToggleButton;
 
 public class AlarmAddActivity extends FragmentActivity {
 
@@ -29,9 +31,32 @@ public class AlarmAddActivity extends FragmentActivity {
         GoogleMap alarmGoogleMap = googleMapFragment.getMap();
         alarmGoogleMap.setOnCameraChangeListener(controller);
 
-
         AlarmCreateButton alarmCreateButton = (AlarmCreateButton) findViewById(R.id.buttonAddAlarm);
         alarmCreateButton.init(controller);
+
+        AlarmCheckBox checkBoxMon = (AlarmCheckBox) findViewById(R.id.checkBoxMon);
+        checkBoxMon.init(controller);
+
+        AlarmCheckBox checkBoxTue = (AlarmCheckBox) findViewById(R.id.checkBoxTue);
+        checkBoxTue.init(controller);
+
+        AlarmCheckBox checkBoxWed = (AlarmCheckBox) findViewById(R.id.checkBoxWed);
+        checkBoxWed.init(controller);
+
+        AlarmCheckBox checkBoxThu = (AlarmCheckBox) findViewById(R.id.checkBoxThu);
+        checkBoxThu.init(controller);
+
+        AlarmCheckBox checkBoxFri = (AlarmCheckBox) findViewById(R.id.checkBoxFri);
+        checkBoxFri.init(controller);
+
+        AlarmCheckBox checkBoxSat = (AlarmCheckBox) findViewById(R.id.checkBoxSat);
+        checkBoxSat.init(controller);
+
+        AlarmCheckBox checkBoxSun = (AlarmCheckBox) findViewById(R.id.checkBoxSun);
+        checkBoxSun.init(controller);
+
+        AlarmToggleButton toggleButton = (AlarmToggleButton) findViewById(R.id.toggleButton);
+        toggleButton.init(controller);
     }
 }
 

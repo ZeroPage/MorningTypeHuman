@@ -1,11 +1,13 @@
 package org.zeropage.gdg.morningTypeHuman.controller;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import org.zeropage.gdg.morningTypeHuman.R;
@@ -14,6 +16,7 @@ import org.zeropage.gdg.morningTypeHuman.model.AlarmInfoStorage;
 import org.zeropage.gdg.morningTypeHuman.view.AlarmAddActivity;
 import org.zeropage.gdg.morningTypeHuman.view.AlarmEditActivity;
 import org.zeropage.gdg.morningTypeHuman.view.AlarmListActivity;
+import org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,11 +33,11 @@ public class AlarmListActivityController extends ArrayAdapter<AlarmInfo> impleme
         clear();
         ArrayList<AlarmInfo> alarmList = null;
         try {
-            alarmList = AlarmInfoStorage.load();
+            alarmList = AlarmInfoStorage.loadList();
         } catch (IOException e) {
             alarmList = new ArrayList<AlarmInfo>(); // 없으면 새로 만듬.
             try {
-                AlarmInfoStorage.save(alarmList);
+                AlarmInfoStorage.saveList(alarmList);
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
@@ -62,6 +65,29 @@ public class AlarmListActivityController extends ArrayAdapter<AlarmInfo> impleme
 
         TextView time = (TextView) row.findViewById(R.id.textViewTime);
         time.setText(timeToString(alarmInfo.hour) + ":" + timeToString(alarmInfo.minute));
+
+        AlarmCheckBox checkBoxMon = (AlarmCheckBox) row.findViewById(R.id.checkBoxMon);
+        AlarmCheckBox checkBoxTue = (AlarmCheckBox) row.findViewById(R.id.checkBoxTue);
+        AlarmCheckBox checkBoxWed = (AlarmCheckBox) row.findViewById(R.id.checkBoxWed);
+        AlarmCheckBox checkBoxThu = (AlarmCheckBox) row.findViewById(R.id.checkBoxThu);
+        AlarmCheckBox checkBoxFri = (AlarmCheckBox) row.findViewById(R.id.checkBoxFri);
+        AlarmCheckBox checkBoxSat = (AlarmCheckBox) row.findViewById(R.id.checkBoxSat);
+        AlarmCheckBox checkBoxSun = (AlarmCheckBox) row.findViewById(R.id.checkBoxSun);
+
+        checkBoxMon.setChecked(alarmInfo.dayOfWeek.mon);
+        checkBoxTue.setChecked(alarmInfo.dayOfWeek.tue);
+        checkBoxWed.setChecked(alarmInfo.dayOfWeek.wed);
+        checkBoxThu.setChecked(alarmInfo.dayOfWeek.thu);
+        checkBoxFri.setChecked(alarmInfo.dayOfWeek.fri);
+        checkBoxSat.setChecked(alarmInfo.dayOfWeek.sat);
+        checkBoxSun.setChecked(alarmInfo.dayOfWeek.sun);
+
+        FrameLayout isAlarmOn = (FrameLayout) row.findViewById(R.id.isAlarmOn);
+        if(alarmInfo.isAlarmOn) {
+            isAlarmOn.setBackgroundColor(Color.GREEN);
+        } else {
+            isAlarmOn.setBackgroundColor(Color.RED);
+        }
 
         return row;
     }

@@ -11,7 +11,7 @@
      android:layout_height="100dp"
         android:gravity="fill_horizontal">
     <FrameLayout
-        android:id="@+id/IsAlarmOn"
+        android:id="@+id/isAlarmOn"
         android:layout_width="10dp"
         android:layout_height="fill_parent"
         android:background="#00ff22"/>
@@ -22,7 +22,7 @@
         android:layout_gravity="center"
         android:text="목요일"
         android:textSize="25sp"
-        android:layout_toRightOf="@+id/IsAlarmOn"
+        android:layout_toRightOf="@+id/isAlarmOn"
         android:layout_centerVertical="true"/>
 
     <LinearLayout
@@ -78,38 +78,38 @@
             android:id="@+id/textView2"
             android:layout_gravity="center_vertical" />
 
-        <CheckBox
+        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBoxMon"
             android:clickable="false"/>
 
-        <CheckBox
+        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBoxTue"
             android:clickable="false" />
-        <CheckBox
+        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBoxWed"
             android:clickable="false" />
-        <CheckBox
+        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBoxThu"
             android:clickable="false" />
-        <CheckBox
+        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBoxFri"
             android:clickable="false" />
-        <CheckBox
+        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBoxSat"
             android:clickable="false" />
-        <CheckBox
+        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBoxSun"
