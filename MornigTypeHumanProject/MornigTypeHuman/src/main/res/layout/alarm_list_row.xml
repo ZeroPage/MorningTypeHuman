@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:gravity="fill_horizontal">
-
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true">
+     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+     android:layout_height="100dp"
+        android:gravity="fill_horizontal">
+    <FrameLayout
+        android:id="@+id/IsAlarmOn"
+        android:layout_width="10dp"
+        android:layout_height="fill_parent"
+        android:background="#00ff22"/>
     <TextView
         android:id="@+id/textViewLectureName"
         android:layout_width="wrap_content"
@@ -12,7 +22,7 @@
         android:layout_gravity="center"
         android:text="목요일"
         android:textSize="25sp"
-        android:layout_alignParentLeft="true"
+        android:layout_toRightOf="@+id/IsAlarmOn"
         android:layout_centerVertical="true"/>
 
     <LinearLayout
@@ -51,3 +61,66 @@
         android:layout_centerVertical="true"/>
 
 </RelativeLayout>
+
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="월"
+            android:id="@+id/textView2"
+            android:layout_gravity="center_vertical" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxMon"
+            android:clickable="false"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxTue"
+            android:clickable="false" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxWed"
+            android:clickable="false" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxThu"
+            android:clickable="false" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxFri"
+            android:clickable="false" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxSat"
+            android:clickable="false" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxSun"
+            android:clickable="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="일"
+            android:id="@+id/textView"
+            android:layout_gravity="center_vertical" />
+    </LinearLayout>
+</LinearLayout>

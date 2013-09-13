@@ -12,5 +12,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_alarm_edit">AlarmEditActivity</string>
 
-    <item type="id" name="ALARMINFO_TO_EDIT_KEY">159753</item>
+    <item name="ALARMINFO_TO_EDIT_KEY" type="id">159753</item>
+
+    <string name="title_activity_credits">CreditsActivity</string>
+
 </resources>

@@ -66,9 +66,12 @@
             android:name="org.zeropage.gdg.morningTypeHuman.view.AlarmEditActivity"
             android:label="@string/title_activity_alarm_edit" >
         </activity>
+        <activity
+            android:name="org.zeropage.gdg.morningTypeHuman.view.CreditsActivity"
+            android:label="@string/title_activity_credits" >
+        </activity>
     </application>
 
-</manifest>
-<!-- android:value="AIzaSyDacKbcukmbzps1FWX46XIUk3aFgS2GHTA" />  영준이 키. -->
+</manifest> <!-- android:value="AIzaSyDacKbcukmbzps1FWX46XIUk3aFgS2GHTA" />  영준이 키. -->
 <!-- android:value="AIzaSyAahOF6FtweLdE2zrhpYwZAtOVL15ZZZXI"/> -->
 
