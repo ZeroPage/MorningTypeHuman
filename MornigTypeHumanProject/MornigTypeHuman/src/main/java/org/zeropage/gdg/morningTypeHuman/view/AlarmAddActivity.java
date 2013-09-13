@@ -8,8 +8,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 
 import org.zeropage.gdg.morningTypeHuman.R;
 import org.zeropage.gdg.morningTypeHuman.controller.AlarmAddActivityController;
-import org.zeropage.gdg.morningTypeHuman.view.alarmadd.AlarmCreateButton;
-import org.zeropage.gdg.morningTypeHuman.view.alarmadd.AlarmTimePicker;
+import org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCreateButton;
+import org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmTimePicker;
 
 public class AlarmAddActivity extends FragmentActivity {
 

@@ -123,10 +123,16 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCreateButton
-        android:id="@+id/buttonAddAlarm"
+    <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmDeleteButton
+        android:id="@+id/buttonDeleteAlarm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="알람 추가하기" />
+        android:text="알람 삭제하기" />
+
+    <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmEditButton
+        android:id="@+id/buttonEditAlarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="알람 수정하기" />
 
 </LinearLayout>

@@ -10,5 +10,7 @@
     <string name="title_activity_alarm_list">MainActivity</string>
     <string name="title_activity_alarm_result">MainActivity</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_alarm_edit">AlarmEditActivity</string>
 
+    <item type="id" name="ALARMINFO_TO_EDIT_KEY">159753</item>
 </resources>

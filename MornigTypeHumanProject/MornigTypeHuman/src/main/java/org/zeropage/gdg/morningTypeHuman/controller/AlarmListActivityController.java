@@ -5,12 +5,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.zeropage.gdg.morningTypeHuman.R;
 import org.zeropage.gdg.morningTypeHuman.model.AlarmInfo;
 import org.zeropage.gdg.morningTypeHuman.model.AlarmInfoStorage;
 import org.zeropage.gdg.morningTypeHuman.view.AlarmAddActivity;
+import org.zeropage.gdg.morningTypeHuman.view.AlarmEditActivity;
 import org.zeropage.gdg.morningTypeHuman.view.AlarmListActivity;
 
 import java.io.IOException;
@@ -48,27 +50,47 @@ public class AlarmListActivityController extends ArrayAdapter<AlarmInfo> impleme
         View row = activity.getLayoutInflater().inflate(R.layout.alarm_list_row, null);
         AlarmInfo alarmInfo = getItem(position);
 
-        // skip imageView
+        Button editButton = (Button) row.findViewById(R.id.buttonEditAlarm);
+        editButton.setTag(R.id.ALARMINFO_TO_EDIT_KEY, new Integer(position));
+        editButton.setOnClickListener(this);
 
         TextView lectureName = (TextView) row.findViewById(R.id.textViewLectureName);
         lectureName.setText(alarmInfo.name);
 
         TextView ampm = (TextView) row.findViewById(R.id.textViewApPm);
-        ampm.setText(alarmInfo.hour>=12?"p.m":"a.m");
+        ampm.setText(alarmInfo.hour>=12?"P.M.":"A.M.");
 
         TextView time = (TextView) row.findViewById(R.id.textViewTime);
-        time.setText(""+(alarmInfo.hour>12?alarmInfo.hour-12:alarmInfo.hour)+":"+alarmInfo.minute);
+        time.setText(timeToString(alarmInfo.hour) + ":" + timeToString(alarmInfo.minute));
 
         return row;
     }
 
     public void listItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        // TODO : call AlarmEditActivity
+        // NOT WORK! :(
     }
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(activity, AlarmAddActivity.class);
-        activity.startActivity(intent);
+        int viewId = view.getId();
+
+        if(viewId == R.id.buttonAddAlarm) {
+            Intent intent = new Intent(activity, AlarmAddActivity.class);
+            activity.startActivity(intent);
+        } else if(viewId == R.id.buttonEditAlarm) {
+            Intent intent = new Intent(activity, AlarmEditActivity.class);
+
+            intent.putExtra("AlarmInfoToEdit", (Integer) view.getTag(R.id.ALARMINFO_TO_EDIT_KEY));
+
+            activity.startActivity(intent);
+        }
+    }
+
+    private String timeToString(int time) {
+        if(time < 10) {
+            return "0" + time;
+        } else {
+            return String.valueOf(time);
+        }
     }
 }

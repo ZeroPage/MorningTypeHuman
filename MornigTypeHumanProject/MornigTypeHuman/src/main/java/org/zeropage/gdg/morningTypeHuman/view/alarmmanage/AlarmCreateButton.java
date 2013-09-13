@@ -1,10 +1,8 @@
-package org.zeropage.gdg.morningTypeHuman.view.alarmadd;
+package org.zeropage.gdg.morningTypeHuman.view.alarmmanage;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.Button;
-
-import org.zeropage.gdg.morningTypeHuman.controller.AlarmAddActivityController;
 
 /**
  * Created by rino0601 on 13. 9. 13..
@@ -31,7 +29,7 @@ public class AlarmCreateButton extends Button {
         this.context = context;
     }
 
-    public void init(AlarmAddActivityController controller) {
+    public void init(OnClickListener controller) {
         setOnClickListener(controller);
     }
 }

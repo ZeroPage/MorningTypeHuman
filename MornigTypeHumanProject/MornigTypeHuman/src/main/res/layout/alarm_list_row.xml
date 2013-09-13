@@ -19,7 +19,7 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/imageButton"
+        android:layout_toLeftOf="@+id/buttonEditAlarm"
         android:layout_centerVertical="true">
 
         <TextView
@@ -45,7 +45,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
+        android:id="@+id/buttonEditAlarm"
         android:text="편집"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"/>

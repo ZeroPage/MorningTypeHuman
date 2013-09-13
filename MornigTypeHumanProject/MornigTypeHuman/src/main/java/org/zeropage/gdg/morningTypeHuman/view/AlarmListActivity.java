@@ -2,7 +2,6 @@ package org.zeropage.gdg.morningTypeHuman.view;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
 
 import org.zeropage.gdg.morningTypeHuman.R;
 import org.zeropage.gdg.morningTypeHuman.controller.AlarmListActivityController;
@@ -28,12 +27,4 @@ public class AlarmListActivity extends Activity {
         AlarmListView listView = (AlarmListView)findViewById(R.id.listView);
         listView.init(controller);
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.alarm_list, menu);
-        return true;
-    }
-    
 }

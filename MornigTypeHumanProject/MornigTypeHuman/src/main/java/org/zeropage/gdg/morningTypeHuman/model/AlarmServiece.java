@@ -29,7 +29,7 @@ public class AlarmServiece extends BroadcastReceiver {
         context.startActivity(intent);
     }
 
-    public void enableWeeklyAlarm(Context context, AlarmInfo newAlarm) throws IOException {
+    public void enableAlarm(Context context, AlarmInfo newAlarm) throws IOException {
         // AlarmManager 호출
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
@@ -59,7 +59,8 @@ public class AlarmServiece extends BroadcastReceiver {
         return PendingIntent.getBroadcast(context, 0, intent, 0);
     }
 
-    public void disableWeeklyAlarm(Context context, AlarmInfo newAlarm) throws IOException {
-        // 리스트에 띄우고 난뒤 작업 할 것.
+    public void disableAlarm(Context context, AlarmInfo newAlarm) throws IOException {
+        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        am.cancel(getPendingIntent(context, newAlarm));
     }
 }
