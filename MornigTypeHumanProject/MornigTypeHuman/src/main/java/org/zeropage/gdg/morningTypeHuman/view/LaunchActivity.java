@@ -9,8 +9,11 @@ import org.zeropage.gdg.morningTypeHuman.R;
 import org.zeropage.gdg.morningTypeHuman.controller.LaunchActivityController;
 import org.zeropage.gdg.morningTypeHuman.model.FileStorage;
 
-public class LaunchActivity extends Activity {
+import java.util.Timer;
+import java.util.TimerTask;
 
+public class LaunchActivity extends Activity {
+    protected int _splashTime = 2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +23,15 @@ public class LaunchActivity extends Activity {
         FileStorage.init(this);
 
         LaunchActivityController controller = new LaunchActivityController(this);
-
-        startActivity(new Intent(this, MainActivity.class));
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                finish();
+                startActivity(new Intent(LaunchActivity.this, MainActivity.class));
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(task, _splashTime);
     }
 
     @Override
@@ -36,5 +46,5 @@ public class LaunchActivity extends Activity {
         getMenuInflater().inflate(R.menu.launch, menu);
         return true;
     }
-    
+
 }
