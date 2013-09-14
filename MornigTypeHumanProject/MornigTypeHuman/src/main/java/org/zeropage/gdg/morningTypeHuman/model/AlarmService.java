@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.zeropage.gdg.morningTypeHuman.view.AlarmResultActivity;
 
@@ -50,10 +51,14 @@ public class AlarmService extends BroadcastReceiver {
         }
 
         dayDifference = getDayDifference(cal_now.DAY_OF_WEEK, newAlarm.dayOfWeek);
+        cal_alarm.add(Calendar.DATE, dayDifference);
+
+        //For Debugging.
+        Toast.makeText(context, cal_alarm.getTime().toString(), Toast.LENGTH_LONG).show();
 
         //SET YOUR AlarmManager here
         PendingIntent sender = getPendingIntent(context, newAlarm);
-        am.set(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis() + dayDifference * 24 * 60 * 60 * 1000, sender);
+        am.set(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(), sender);
         // 알람 매니저에 알람을 등록
 //        am.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),(7*24*60*60*1000),sender);
 //        // ㄴ '등록 시점'으로 부터 일주일 동안 반복하는 코드 완성.
@@ -104,7 +109,12 @@ public class AlarmService extends BroadcastReceiver {
                     return count;
                 }
             }
-        count++;
+            if(dayOfWeekToday == 7) {
+                dayOfWeekToday = 1;
+            } else {
+                dayOfWeekToday++;
+            }
+            count++;
         }
         return 0;
     }

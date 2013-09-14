@@ -64,6 +64,9 @@ public class AlarmListActivityController extends ArrayAdapter<AlarmInfo> impleme
         ampm.setText(alarmInfo.hour>=12?"P.M.":"A.M.");
 
         TextView time = (TextView) row.findViewById(R.id.textViewTime);
+        if(alarmInfo.hour >=  12) {
+            alarmInfo.hour -= 12;
+        }
         time.setText(timeToString(alarmInfo.hour) + ":" + timeToString(alarmInfo.minute));
 
         AlarmCheckBox checkBoxMon = (AlarmCheckBox) row.findViewById(R.id.checkBoxMon);
