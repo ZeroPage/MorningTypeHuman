@@ -24,7 +24,7 @@ public class LaunchActivity extends BaseGameActivity {
         // init here.
         FileStorage.init(this);
         AppStatisticsManager.init(this);
-        AppStatisticsManager.increaseTotalLaunched(this);
+        AppStatisticsManager.appLaunched(this);
 
         LaunchActivityController controller = new LaunchActivityController(this);
 

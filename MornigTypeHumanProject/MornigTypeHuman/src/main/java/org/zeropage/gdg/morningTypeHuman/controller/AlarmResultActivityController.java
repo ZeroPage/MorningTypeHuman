@@ -1,7 +1,12 @@
 package org.zeropage.gdg.morningTypeHuman.controller;
 
+import android.app.AlarmManager;
+
 import org.zeropage.gdg.morningTypeHuman.model.AlarmInfo;
+import org.zeropage.gdg.morningTypeHuman.model.AlarmService;
 import org.zeropage.gdg.morningTypeHuman.view.AlarmResultActivity;
+
+import java.io.IOException;
 
 /**
  * Created by rino0601 on 13. 9. 13..
@@ -13,6 +18,13 @@ public class AlarmResultActivityController {
     public AlarmResultActivityController(AlarmResultActivity activity, AlarmInfo alarm) {
         this.activity = activity;
         this.alarm = alarm;
+
+        AlarmService alarmService = new AlarmService();
+        try {
+            alarmService.enableAlarm(this.activity, this.alarm);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean isValid(double latitude, double longitude) {
