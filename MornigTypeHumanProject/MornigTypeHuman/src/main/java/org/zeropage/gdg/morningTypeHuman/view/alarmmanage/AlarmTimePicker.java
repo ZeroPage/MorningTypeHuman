@@ -27,6 +27,7 @@ public class AlarmTimePicker extends TimePicker {
 
     private void create(Context context) {
         this.context = context;
+        this.setDescendantFocusability(TimePicker.FOCUS_BLOCK_DESCENDANTS);
     }
 
     public void init(OnTimeChangedListener controller) {

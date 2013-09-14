@@ -31,24 +31,18 @@ public class AlarmService extends BroadcastReceiver {
     }
 
     public void enableAlarm(Context context, AlarmInfo newAlarm) throws IOException {
-        // AlarmManager 호출
-        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        int dayDifference;
-
         // 알람을 받을 시간을, 넘겨 받은 정보를 가지고 설정.
-
         Calendar cal_alarm = Calendar.getInstance();
-        Calendar cal_now = Calendar.getInstance();
-
         cal_alarm.set(Calendar.HOUR_OF_DAY, newAlarm.hour);//set the alarm time
         cal_alarm.set(Calendar.MINUTE, newAlarm.minute);
         cal_alarm.set(Calendar.SECOND, 0);
 
-
+        Calendar cal_now = Calendar.getInstance();
         if (cal_alarm.before(cal_now)) {//if its in the past increment
             cal_now.add(Calendar.DATE, 1);
         }
 
+        int dayDifference;
         dayDifference = getDayDifference(cal_now.DAY_OF_WEEK, newAlarm.dayOfWeek);
         cal_alarm.add(Calendar.DATE, dayDifference);
 
@@ -56,6 +50,7 @@ public class AlarmService extends BroadcastReceiver {
         Toast.makeText(context, cal_alarm.getTime().toString(), Toast.LENGTH_LONG).show();
 
         //SET YOUR AlarmManager here
+        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent sender = getPendingIntent(context, newAlarm);
         am.set(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(), sender);
         // 알람 매니저에 알람을 등록
