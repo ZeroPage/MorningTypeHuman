@@ -16,7 +16,7 @@ public class AlarmResultActivityController {
     }
 
     public boolean isValid(double latitude, double longitude) {
-        return (distance(latitude,longitude,alarm.latitude,alarm.longitude)<1.0);
+        return (distance(latitude, longitude, alarm.latitude, alarm.longitude) < 1.0);
     }
 
     private double distance(double lat1, double lon1, double lat2, double lon2) {

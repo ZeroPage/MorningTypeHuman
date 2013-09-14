@@ -25,21 +25,19 @@ public class SettingActivity extends PreferenceActivity {
         statsPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-            //Intent intent = new Intent(SettingActivity.this, StatsActivity.class);
-            //startActivity(intent);
-            //ToDo make StatsActivity and then remove this line and uncomment 2 lines above it.
-
-            return false;
+                //Intent intent = new Intent(SettingActivity.this, StatsActivity.class);
+                //startActivity(intent);
+                //ToDo make StatsActivity and then remove this line and uncomment 2 lines above it.
+                return false;
             }
         });
 
         creditsPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-            Intent intent = new Intent(SettingActivity.this, CreditsActivity.class);
-            startActivity(intent);
-
-            return false;
+                Intent intent = new Intent(SettingActivity.this, CreditsActivity.class);
+                startActivity(intent);
+                return false;
             }
         });
     }

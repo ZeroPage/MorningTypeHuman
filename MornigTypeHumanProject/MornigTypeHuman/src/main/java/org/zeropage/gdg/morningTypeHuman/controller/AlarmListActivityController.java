@@ -42,7 +42,7 @@ public class AlarmListActivityController extends ArrayAdapter<AlarmInfo> impleme
                 e1.printStackTrace();
             }
         }
-        for(AlarmInfo alarmInfo : alarmList ){
+        for (AlarmInfo alarmInfo : alarmList) {
             add(alarmInfo);
         }
         notifyDataSetChanged();
@@ -61,10 +61,10 @@ public class AlarmListActivityController extends ArrayAdapter<AlarmInfo> impleme
         lectureName.setText(alarmInfo.name);
 
         TextView ampm = (TextView) row.findViewById(R.id.textViewApPm);
-        ampm.setText(alarmInfo.hour>=12?"P.M.":"A.M.");
+        ampm.setText(alarmInfo.hour >= 12 ? "P.M." : "A.M.");
 
         TextView time = (TextView) row.findViewById(R.id.textViewTime);
-        if(alarmInfo.hour >=  12) {
+        if (alarmInfo.hour >= 12) {
             alarmInfo.hour -= 12;
         }
         time.setText(timeToString(alarmInfo.hour) + ":" + timeToString(alarmInfo.minute));
@@ -86,7 +86,7 @@ public class AlarmListActivityController extends ArrayAdapter<AlarmInfo> impleme
         checkBoxSun.setChecked(alarmInfo.dayOfWeek.sun);
 
         FrameLayout isAlarmOn = (FrameLayout) row.findViewById(R.id.isAlarmOn);
-        if(alarmInfo.isAlarmOn) {
+        if (alarmInfo.isAlarmOn) {
             isAlarmOn.setBackgroundColor(Color.GREEN);
         } else {
             isAlarmOn.setBackgroundColor(Color.RED);
@@ -103,10 +103,10 @@ public class AlarmListActivityController extends ArrayAdapter<AlarmInfo> impleme
     public void onClick(View view) {
         int viewId = view.getId();
 
-        if(viewId == R.id.buttonAddAlarm) {
+        if (viewId == R.id.buttonAddAlarm) {
             Intent intent = new Intent(activity, AlarmAddActivity.class);
             activity.startActivity(intent);
-        } else if(viewId == R.id.buttonEditAlarm) {
+        } else if (viewId == R.id.buttonEditAlarm) {
             Intent intent = new Intent(activity, AlarmEditActivity.class);
 
             intent.putExtra("AlarmInfoToEdit", (Integer) view.getTag(R.id.ALARMINFO_TO_EDIT_KEY));
@@ -116,7 +116,7 @@ public class AlarmListActivityController extends ArrayAdapter<AlarmInfo> impleme
     }
 
     private String timeToString(int time) {
-        if(time < 10) {
+        if (time < 10) {
             return "0" + time;
         } else {
             return String.valueOf(time);

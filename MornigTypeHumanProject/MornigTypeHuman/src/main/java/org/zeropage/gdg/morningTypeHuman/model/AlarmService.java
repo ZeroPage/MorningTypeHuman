@@ -26,7 +26,7 @@ public class AlarmService extends BroadcastReceiver {
         AlarmInfo alarmInfo = (AlarmInfo) fromIntent.getExtras().get(AlarmInfo.intentKey);
         Intent intent = new Intent(context, AlarmResultActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(AlarmInfo.intentKey,alarmInfo);
+        intent.putExtra(AlarmInfo.intentKey, alarmInfo);
         context.startActivity(intent);
     }
 
@@ -43,7 +43,6 @@ public class AlarmService extends BroadcastReceiver {
         cal_alarm.set(Calendar.HOUR_OF_DAY, newAlarm.hour);//set the alarm time
         cal_alarm.set(Calendar.MINUTE, newAlarm.minute);
         cal_alarm.set(Calendar.SECOND, 0);
-
 
 
         if (cal_alarm.before(cal_now)) {//if its in the past increment
@@ -79,37 +78,37 @@ public class AlarmService extends BroadcastReceiver {
 
     private int getDayDifference(int dayOfWeekToday, DayOfWeek dayOfWeek) {
         int count = 0;
-        while(count < 7) {
-            if(dayOfWeekToday == 1) {
-                if(dayOfWeek.sun) {
+        while (count < 7) {
+            if (dayOfWeekToday == 1) {
+                if (dayOfWeek.sun) {
                     return count;
                 }
-            } else if(dayOfWeekToday == 2) {
-                if(dayOfWeek.mon) {
+            } else if (dayOfWeekToday == 2) {
+                if (dayOfWeek.mon) {
                     return count;
                 }
-            } else if(dayOfWeekToday == 3) {
-                if(dayOfWeek.tue) {
+            } else if (dayOfWeekToday == 3) {
+                if (dayOfWeek.tue) {
                     return count;
                 }
-            } else if(dayOfWeekToday == 4) {
-                if(dayOfWeek.wed) {
+            } else if (dayOfWeekToday == 4) {
+                if (dayOfWeek.wed) {
                     return count;
                 }
-            } else if(dayOfWeekToday == 5) {
-                if(dayOfWeek.thu) {
+            } else if (dayOfWeekToday == 5) {
+                if (dayOfWeek.thu) {
                     return count;
                 }
-            } else if(dayOfWeekToday == 6) {
-                if(dayOfWeek.fri) {
+            } else if (dayOfWeekToday == 6) {
+                if (dayOfWeek.fri) {
                     return count;
                 }
-            } else if(dayOfWeekToday == 7) {
-                if(dayOfWeek.sat) {
+            } else if (dayOfWeekToday == 7) {
+                if (dayOfWeek.sat) {
                     return count;
                 }
             }
-            if(dayOfWeekToday == 7) {
+            if (dayOfWeekToday == 7) {
                 dayOfWeekToday = 1;
             } else {
                 dayOfWeekToday++;

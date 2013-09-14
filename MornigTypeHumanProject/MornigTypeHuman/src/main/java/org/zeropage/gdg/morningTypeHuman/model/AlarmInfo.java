@@ -5,8 +5,8 @@ import java.io.Serializable;
 /**
  * Created by rino0601 on 13. 9. 13..
  */
-public class AlarmInfo implements Serializable{
-    public static String intentKey="alarmInfo";
+public class AlarmInfo implements Serializable {
+    public static String intentKey = "alarmInfo";
     public String name;
     public int hour;
     public int minute;

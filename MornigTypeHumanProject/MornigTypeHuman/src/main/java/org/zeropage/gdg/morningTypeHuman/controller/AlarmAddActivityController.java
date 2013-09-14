@@ -49,9 +49,6 @@ public class AlarmAddActivityController implements TimePicker.OnTimeChangedListe
         longitude = cameraPosition.target.longitude;
     }
 
-    /**
-     * 근래에 짠 코드중 가장 만에 안드는 코드가 나왔다.. 아,,,
-     */
     @Override
     public void onClick(View view) {
         EditText editText = (EditText) activity.findViewById(R.id.editTextLectureName);
@@ -73,7 +70,7 @@ public class AlarmAddActivityController implements TimePicker.OnTimeChangedListe
             Toast.makeText(activity, "FATAL_ERROR:새 알람 목록을 저장하는데 실패.", Toast.LENGTH_LONG).show();
             return;
         }
-        if(isAlarmOn) {
+        if (isAlarmOn) {
             activateAlarm(newAlarm);
         }
         activity.finish();
@@ -82,21 +79,21 @@ public class AlarmAddActivityController implements TimePicker.OnTimeChangedListe
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         int viewId = buttonView.getId();
-        if(viewId == R.id.checkBoxMon) {
+        if (viewId == R.id.checkBoxMon) {
             dayOfWeek.mon = isChecked;
-        } else if(viewId == R.id.checkBoxTue) {
+        } else if (viewId == R.id.checkBoxTue) {
             dayOfWeek.tue = isChecked;
-        } else if(viewId == R.id.checkBoxWed) {
+        } else if (viewId == R.id.checkBoxWed) {
             dayOfWeek.wed = isChecked;
-        } else if(viewId == R.id.checkBoxThu) {
+        } else if (viewId == R.id.checkBoxThu) {
             dayOfWeek.thu = isChecked;
-        } else if(viewId == R.id.checkBoxFri) {
+        } else if (viewId == R.id.checkBoxFri) {
             dayOfWeek.fri = isChecked;
-        } else if(viewId == R.id.checkBoxSat) {
+        } else if (viewId == R.id.checkBoxSat) {
             dayOfWeek.sat = isChecked;
-        } else if(viewId == R.id.checkBoxSun) {
+        } else if (viewId == R.id.checkBoxSun) {
             dayOfWeek.sun = isChecked;
-        } else if(viewId == R.id.toggleButton) {
+        } else if (viewId == R.id.toggleButton) {
             isAlarmOn = isChecked;
         }
     }
