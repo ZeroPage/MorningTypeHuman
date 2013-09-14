@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import org.zeropage.gdg.morningTypeHuman.R;
 import org.zeropage.gdg.morningTypeHuman.controller.LaunchActivityController;
-import org.zeropage.gdg.morningTypeHuman.model.AppStatsManager;
+import org.zeropage.gdg.morningTypeHuman.model.AppStatisticsManager;
 import org.zeropage.gdg.morningTypeHuman.model.FileStorage;
 
 import java.util.Timer;
@@ -24,7 +24,9 @@ public class LaunchActivity extends Activity {
 
         // init here.
         FileStorage.init(this);
-        AppStatsManager.init(this);
+        AppStatisticsManager.init(this);
+
+        AppStatisticsManager.increaseTotalLaunched(this);
 
         LaunchActivityController controller = new LaunchActivityController(this);
         TimerTask task = new TimerTask() {

@@ -31,7 +31,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <receiver
-            android:name=".model.AlarmService"
+            android:name="org.zeropage.gdg.morningTypeHuman.model.AlarmService"
             android:process=":remote" />
 
         <meta-data
@@ -41,7 +41,7 @@
         <activity
             android:name="org.zeropage.gdg.morningTypeHuman.view.LaunchActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,32 +51,36 @@
         <activity
             android:name="org.zeropage.gdg.morningTypeHuman.view.SettingActivity"
             android:label="@string/title_activity_setting"
-            android:theme="@android:style/Theme.Light.NoTitleBar"/>
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
             android:name="org.zeropage.gdg.morningTypeHuman.view.AlarmAddActivity"
             android:label="@string/title_activity_alarm_add"
-            android:theme="@android:style/Theme.Light.NoTitleBar"/>
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
             android:name="org.zeropage.gdg.morningTypeHuman.view.AlarmListActivity"
             android:label="@string/title_activity_alarm_list"
-            android:theme="@android:style/Theme.Light.NoTitleBar"/>
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
             android:name="org.zeropage.gdg.morningTypeHuman.view.AlarmResultActivity"
             android:label="@string/title_activity_alarm_result"
-            android:theme="@android:style/Theme.Light.NoTitleBar"/>
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
             android:name="org.zeropage.gdg.morningTypeHuman.view.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@android:style/Theme.Light.NoTitleBar"/>
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
             android:name="org.zeropage.gdg.morningTypeHuman.view.AlarmEditActivity"
             android:label="@string/title_activity_alarm_edit"
-            android:theme="@android:style/Theme.Light.NoTitleBar">
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
             android:name="org.zeropage.gdg.morningTypeHuman.view.CreditsActivity"
             android:label="@string/title_activity_credits"
-            android:theme="@android:style/Theme.Light.NoTitleBar">
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="org.zeropage.gdg.morningTypeHuman.view.StatisticsActivity"
+            android:label="@string/title_activity_statistics" >
         </activity>
     </application>
 

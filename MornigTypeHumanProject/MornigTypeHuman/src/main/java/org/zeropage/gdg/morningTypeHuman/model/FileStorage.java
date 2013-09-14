@@ -15,14 +15,14 @@ import java.util.ArrayList;
  */
 public class FileStorage {
     private static File alarmInfoListFile = null;
-    private static File AppStatsFile = null;
+    private static File AppStatisticsFile = null;
 
     public static void init(Context context) {// 이방법 뭔가 비효율적인 메모리 낭비인 것 같지만.. 일단 만들기 편하니
         File externalFilesDir = context.getExternalFilesDir(null);
         if (!externalFilesDir.isDirectory())
             externalFilesDir.mkdirs();
         alarmInfoListFile = new File(externalFilesDir, "alarmInfoListFile.serial");
-        AppStatsFile = new File(externalFilesDir, "appStatsFile.serial");
+        AppStatisticsFile = new File(externalFilesDir, "appStatsFile.serial");
     }
 
     public static void saveAlarmList(ArrayList<AlarmInfo> sender) throws IOException {
@@ -63,11 +63,11 @@ public class FileStorage {
         return result;
     }
 
-    public static void saveAppStats(AppStats sender) throws IOException {
+    public static void saveAppStats(AppStatistics sender) throws IOException {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
-            fos = new FileOutputStream(AppStatsFile);
+            fos = new FileOutputStream(AppStatisticsFile);
             oos = new ObjectOutputStream(fos);
             oos.writeObject(sender);
         } finally {
@@ -80,14 +80,14 @@ public class FileStorage {
         }
     }
 
-    public static AppStats loadAppStats() throws IOException {
+    public static AppStatistics loadAppStats() throws IOException {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
-        AppStats result = null;
+        AppStatistics result = null;
         try {
-            fis = new FileInputStream(AppStatsFile);
+            fis = new FileInputStream(AppStatisticsFile);
             ois = new ObjectInputStream(fis);
-            result = (AppStats) ois.readObject();
+            result = (AppStatistics) ois.readObject();
         }catch (ClassNotFoundException e){
             throw new IOException(e);
         } finally {

@@ -25,9 +25,8 @@ public class SettingActivity extends PreferenceActivity {
         statsPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                //Intent intent = new Intent(SettingActivity.this, StatsActivity.class);
-                //startActivity(intent);
-                //ToDo make StatsActivity and then remove this line and uncomment 2 lines above it.
+                Intent intent = new Intent(SettingActivity.this, StatisticsActivity.class);
+                startActivity(intent);
                 return false;
             }
         });
