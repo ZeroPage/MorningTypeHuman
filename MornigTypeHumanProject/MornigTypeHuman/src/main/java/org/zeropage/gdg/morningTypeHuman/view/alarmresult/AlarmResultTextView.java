@@ -45,7 +45,7 @@ public class AlarmResultTextView extends TextView implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-        if(controller.isValid(location.getLatitude(),location.getLongitude())) {
+        if (controller.isValid(location.getLatitude(), location.getLongitude())) {
             setText("성공!!!");
         } else {
             setText("실패ㅠㅜ");

@@ -1,8 +1,8 @@
 package org.zeropage.gdg.morningTypeHuman.view;
 
-import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
+import android.os.Bundle;
+
 import org.zeropage.gdg.morningTypeHuman.R;
 
 public class CreditsActivity extends Activity {
@@ -12,6 +12,4 @@ public class CreditsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credits);
     }
-
-    
 }

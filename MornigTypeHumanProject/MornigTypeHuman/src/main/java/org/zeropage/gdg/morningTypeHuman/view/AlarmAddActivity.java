@@ -34,6 +34,7 @@ public class AlarmAddActivity extends FragmentActivity {
         AlarmCreateButton alarmCreateButton = (AlarmCreateButton) findViewById(R.id.buttonAddAlarm);
         alarmCreateButton.init(controller);
 
+        // FIXME: make it CheckBoxGroup
         AlarmCheckBox checkBoxMon = (AlarmCheckBox) findViewById(R.id.checkBoxMon);
         checkBoxMon.init(controller);
 

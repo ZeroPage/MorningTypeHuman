@@ -9,7 +9,7 @@ import org.zeropage.gdg.morningTypeHuman.controller.AlarmListActivityController;
 /**
  * Created by rino0601 on 13. 9. 13..
  */
-public class AlarmAddButton extends Button{
+public class AlarmAddButton extends Button {
     private Context context;
 
     public AlarmAddButton(Context context) {

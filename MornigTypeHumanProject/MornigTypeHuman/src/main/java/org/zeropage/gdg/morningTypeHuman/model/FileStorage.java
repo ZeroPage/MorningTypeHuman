@@ -50,7 +50,7 @@ public class FileStorage {
             fis = new FileInputStream(alarmInfoListFile);
             ois = new ObjectInputStream(fis);
             result = (ArrayList<AlarmInfo>) ois.readObject();
-        }catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             throw new IOException(e);
         } finally {
             if (ois != null) {

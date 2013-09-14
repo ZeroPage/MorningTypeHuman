@@ -43,6 +43,6 @@ public class AlarmListView extends ListView implements AdapterView.OnItemClickLi
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         //NOT WORK! :(
-        controller.listItemClick(adapterView,view,i,l);
+        controller.listItemClick(adapterView, view, i, l);
     }
 }

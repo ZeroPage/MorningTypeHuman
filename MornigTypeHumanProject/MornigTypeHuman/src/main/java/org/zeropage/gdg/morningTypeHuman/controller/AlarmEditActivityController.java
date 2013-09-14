@@ -39,6 +39,7 @@ public class AlarmEditActivityController implements View.OnClickListener, TimePi
     private boolean isAlarmOn;
     private DayOfWeek dayOfWeek;
 
+    // FIXME too many field variables;
     Button editButton;
     Button removeButton;
     EditText editText;
@@ -62,6 +63,7 @@ public class AlarmEditActivityController implements View.OnClickListener, TimePi
         alarmInfoToEdit = activity.getIntent().getExtras().getInt("AlarmInfoToEdit");
         dayOfWeek = new DayOfWeek();
 
+        // FIXME move it to Activity onCreate()
         editButton = (Button) activity.findViewById(R.id.buttonEditAlarm);
         removeButton = (Button) activity.findViewById(R.id.buttonDeleteAlarm);
         editText = (EditText) activity.findViewById(R.id.editTextLectureName);
@@ -108,10 +110,11 @@ public class AlarmEditActivityController implements View.OnClickListener, TimePi
 
     @Override
     public void onClick(View v) {
+        // FIXME private method로 의미 분할이 필요해 보임.
         int viewId = v.getId();
-        if(viewId == R.id.buttonEditAlarm) {
+        if (viewId == R.id.buttonEditAlarm) {
             name = editText.getEditableText().toString();
-            if(name == null || name.equals("")) {
+            if (name == null || name.equals("")) {
                 Toast.makeText(activity, "강의명을 입력해 주세요.", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -132,7 +135,7 @@ public class AlarmEditActivityController implements View.OnClickListener, TimePi
             }
             Toast.makeText(activity, "알람 수정 완료", Toast.LENGTH_LONG).show();
             deactivateAlarm(oldAlarmInfo);
-            if(isAlarmOn) {
+            if (isAlarmOn) {
                 activateAlarm(newAlarmInfo);
             }
             activity.finish();
@@ -166,21 +169,21 @@ public class AlarmEditActivityController implements View.OnClickListener, TimePi
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         int viewId = buttonView.getId();
 
-        if(viewId == R.id.checkBoxMon) {
+        if (viewId == R.id.checkBoxMon) {
             dayOfWeek.mon = isChecked;
-        } else if(viewId == R.id.checkBoxTue) {
+        } else if (viewId == R.id.checkBoxTue) {
             dayOfWeek.tue = isChecked;
-        } else if(viewId == R.id.checkBoxWed) {
+        } else if (viewId == R.id.checkBoxWed) {
             dayOfWeek.wed = isChecked;
-        } else if(viewId == R.id.checkBoxThu) {
+        } else if (viewId == R.id.checkBoxThu) {
             dayOfWeek.thu = isChecked;
-        } else if(viewId == R.id.checkBoxFri) {
+        } else if (viewId == R.id.checkBoxFri) {
             dayOfWeek.fri = isChecked;
-        } else if(viewId == R.id.checkBoxSat) {
+        } else if (viewId == R.id.checkBoxSat) {
             dayOfWeek.sat = isChecked;
-        } else if(viewId == R.id.checkBoxSun) {
+        } else if (viewId == R.id.checkBoxSun) {
             dayOfWeek.sun = isChecked;
-        } else if(viewId == R.id.toggleButton) {
+        } else if (viewId == R.id.toggleButton) {
             isAlarmOn = isChecked;
         }
     }
