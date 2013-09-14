@@ -2,125 +2,226 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerVertical="true">
-     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:layout_width="match_parent"
-     android:layout_height="100dp"
-        android:gravity="fill_horizontal">
     <FrameLayout
         android:id="@+id/isAlarmOn"
-        android:layout_width="10dp"
+        android:layout_width="20dp"
         android:layout_height="fill_parent"
-        android:background="#00ff22"/>
-    <TextView
-        android:id="@+id/textViewLectureName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="목요일"
-        android:textSize="25sp"
-        android:layout_toRightOf="@+id/isAlarmOn"
-        android:layout_centerVertical="true"/>
-
+        android:background="#00ff22"
+        android:layout_marginRight="5dp" />
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/buttonEditAlarm"
-        android:layout_centerVertical="true">
-
-        <TextView
-            android:id="@+id/textViewTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="00:00"
-            android:textSize="35sp"
-            android:gravity="center" />
-
-        <TextView
-            android:id="@+id/textViewApPm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="a.m"
-            android:textSize="20sp"
-            android:gravity="center" />
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonEditAlarm"
-        android:text="편집"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"/>
-
-</RelativeLayout>
-
-    <LinearLayout
-
-        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="월"
-            android:id="@+id/textView2"
-            android:layout_gravity="center_vertical" />
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+           android:gravity="fill_horizontal">
 
-        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBoxMon"
-            android:clickable="false"/>
+            <TextView
+           android:id="@+id/textViewLectureName"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:text="목요일"
+           android:textSize="25sp"
+           android:layout_alignParentLeft="true"
+           android:layout_centerVertical="true"/>
 
-        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBoxTue"
-            android:clickable="false" />
-        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBoxWed"
-            android:clickable="false" />
-        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBoxThu"
-            android:clickable="false" />
-        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBoxFri"
-            android:clickable="false" />
-        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBoxSat"
-            android:clickable="false" />
-        <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBoxSun"
-            android:clickable="false" />
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_toLeftOf="@+id/buttonEditAlarm"
+           android:layout_centerVertical="true">
 
-        <TextView
+           <TextView
+               android:id="@+id/textViewTime"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:text="00:00"
+               android:textSize="35sp"
+               android:gravity="center" />
+
+           <TextView
+               android:id="@+id/textViewApPm"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:text="a.m"
+               android:textSize="20sp"
+               android:gravity="center" />
+
+       </LinearLayout>
+
+       <Button
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/buttonEditAlarm"
+           android:text="편집"
+           android:layout_alignParentRight="true"
+           android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="일"
-            android:id="@+id/textView"
-            android:layout_gravity="center_vertical" />
+            android:layout_height="40dp">
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="월"
+                        android:id="@+id/textView"
+                        android:layout_gravity="center_horizontal" />
+
+                    <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkBoxMon"
+                        android:clickable="false" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="화"
+                        android:id="@+id/textView"
+                        android:layout_gravity="center_horizontal" />
+
+                    <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkBoxTue"
+                        android:clickable="false" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="수"
+                        android:id="@+id/textView"
+                        android:layout_gravity="center_horizontal" />
+
+                    <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkBoxWed"
+                        android:clickable="false" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="목"
+                        android:id="@+id/textView"
+                        android:layout_gravity="center_horizontal" />
+
+                    <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkBoxThu"
+                        android:clickable="false" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="금"
+                        android:id="@+id/textView"
+                        android:layout_gravity="center_horizontal" />
+
+                    <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkBoxFri"
+                        android:clickable="false" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="토"
+                        android:id="@+id/textView"
+                        android:layout_gravity="center_horizontal" />
+
+                    <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkBoxSat"
+                        android:clickable="false" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="일"
+                        android:id="@+id/textView"
+                        android:layout_gravity="center_horizontal" />
+
+                    <org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkBoxSun"
+                        android:clickable="false" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
