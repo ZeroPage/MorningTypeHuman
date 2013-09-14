@@ -1,0 +1,9 @@
+<resources>
+    <!-- your app's app ID! -->
+    <string name="app_id">419243721001</string>
+    <!-- achievement ID -->
+    <string name="achievement_first">CgkI3ojdsvoZEAIQAg</string>
+    <string name="achievement_20">CgkI3ojdsvoZEAIQAw</string>
+    <!-- leaderboard ID -->
+    <string name="leaderboard_bounces">CgkI3ojdsvoZEAIQBA</string>
+</resources>
