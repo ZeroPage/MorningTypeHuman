@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 import org.zeropage.gdg.morningTypeHuman.controller.AlarmResultActivityController;
+import org.zeropage.gdg.morningTypeHuman.model.AppStatisticsManager;
 
 /**
  * Created by rino0601 on 13. 9. 13..
@@ -46,8 +47,12 @@ public class AlarmResultTextView extends TextView implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         if (controller.isValid(location.getLatitude(), location.getLongitude())) {
+            AppStatisticsManager.increaseTotalTries(context);
+            AppStatisticsManager.increaseTotalSucceed(context);
             setText("성공!!!");
         } else {
+            AppStatisticsManager.increaseTotalTries(context);
+            AppStatisticsManager.increaseTotalFailed(context);
             setText("실패ㅠㅜ");
         }
         LocationManager manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
