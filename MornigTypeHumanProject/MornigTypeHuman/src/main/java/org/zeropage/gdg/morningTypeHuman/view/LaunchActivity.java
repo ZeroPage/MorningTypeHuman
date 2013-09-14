@@ -26,7 +26,7 @@ public class LaunchActivity extends Activity {
         FileStorage.init(this);
         AppStatisticsManager.init(this);
 
-        AppStatisticsManager.increaseTotalLaunched(this);
+        AppStatisticsManager.appLaunched(this);
 
         LaunchActivityController controller = new LaunchActivityController(this);
         TimerTask task = new TimerTask() {

@@ -5,6 +5,7 @@ import android.app.Activity;
 
 import org.zeropage.gdg.morningTypeHuman.R;
 import org.zeropage.gdg.morningTypeHuman.controller.StatisticsActivityController;
+import org.zeropage.gdg.morningTypeHuman.model.AppStatisticsManager;
 import org.zeropage.gdg.morningTypeHuman.view.statistics.StatisticsListView;
 
 public class StatisticsActivity extends Activity {
@@ -14,6 +15,8 @@ public class StatisticsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
         StatisticsActivityController controller = new StatisticsActivityController(this);
+
+        AppStatisticsManager.visitStatistics(this);
 
         ((StatisticsListView) findViewById(R.id.listView)).init(controller);
     }

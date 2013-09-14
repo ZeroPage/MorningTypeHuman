@@ -25,7 +25,7 @@ public class StatisticsActivityController extends ArrayAdapter<StatisticsValue>{
         this.activity = activity;
         clear();
 
-        ArrayList<StatisticsValue> statisticsValues = AppStatisticsManager.getStatisticsValues();
+        ArrayList<StatisticsValue> statisticsValues = AppStatisticsManager.getAllStatisticsValues();
 
         for(StatisticsValue value : statisticsValues) {
             add(value);

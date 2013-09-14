@@ -47,12 +47,10 @@ public class AlarmResultTextView extends TextView implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         if (controller.isValid(location.getLatitude(), location.getLongitude())) {
-            AppStatisticsManager.increaseTotalTries(context);
-            AppStatisticsManager.increaseTotalSucceed(context);
+            AppStatisticsManager.alarmSucceed(context);
             setText("성공!!!");
         } else {
-            AppStatisticsManager.increaseTotalTries(context);
-            AppStatisticsManager.increaseTotalFailed(context);
+            AppStatisticsManager.alarmFailed(context);
             setText("실패ㅠㅜ");
         }
         LocationManager manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
