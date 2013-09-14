@@ -2,6 +2,8 @@ package org.zeropage.gdg.morningTypeHuman.view;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -21,6 +23,9 @@ public class AlarmAddActivity extends FragmentActivity {
         setContentView(R.layout.activity_alarm_add);
 
         AlarmAddActivityController controller = new AlarmAddActivityController(this);
+
+        EditText editText = (EditText) findViewById(R.id.editTextLectureName);
+        editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
         AlarmTimePicker lectureTime = (AlarmTimePicker) findViewById(R.id.timePicker);
         lectureTime.init(controller);
