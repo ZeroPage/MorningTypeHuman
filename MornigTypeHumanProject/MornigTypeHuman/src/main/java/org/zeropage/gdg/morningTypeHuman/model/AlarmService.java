@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.zeropage.gdg.morningTypeHuman.view.AlarmResultActivity;
 
@@ -25,7 +26,7 @@ public class AlarmService extends BroadcastReceiver {
         AlarmInfo alarmInfo = (AlarmInfo) fromIntent.getExtras().get(AlarmInfo.intentKey);
         Intent intent = new Intent(context, AlarmResultActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(AlarmInfo.intentKey,alarmInfo);
+        intent.putExtra(AlarmInfo.intentKey, alarmInfo);
         context.startActivity(intent);
     }
 
@@ -44,16 +45,19 @@ public class AlarmService extends BroadcastReceiver {
         cal_alarm.set(Calendar.SECOND, 0);
 
 
-
         if (cal_alarm.before(cal_now)) {//if its in the past increment
             cal_now.add(Calendar.DATE, 1);
         }
 
         dayDifference = getDayDifference(cal_now.DAY_OF_WEEK, newAlarm.dayOfWeek);
+        cal_alarm.add(Calendar.DATE, dayDifference);
+
+        //For Debugging.
+        Toast.makeText(context, cal_alarm.getTime().toString(), Toast.LENGTH_LONG).show();
 
         //SET YOUR AlarmManager here
         PendingIntent sender = getPendingIntent(context, newAlarm);
-        am.set(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis() + dayDifference * 24 * 60 * 60 * 1000, sender);
+        am.set(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(), sender);
         // 알람 매니저에 알람을 등록
 //        am.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),(7*24*60*60*1000),sender);
 //        // ㄴ '등록 시점'으로 부터 일주일 동안 반복하는 코드 완성.
@@ -74,37 +78,42 @@ public class AlarmService extends BroadcastReceiver {
 
     private int getDayDifference(int dayOfWeekToday, DayOfWeek dayOfWeek) {
         int count = 0;
-        while(count < 7) {
-            if(dayOfWeekToday == 1) {
-                if(dayOfWeek.sun) {
+        while (count < 7) {
+            if (dayOfWeekToday == 1) {
+                if (dayOfWeek.sun) {
                     return count;
                 }
-            } else if(dayOfWeekToday == 2) {
-                if(dayOfWeek.mon) {
+            } else if (dayOfWeekToday == 2) {
+                if (dayOfWeek.mon) {
                     return count;
                 }
-            } else if(dayOfWeekToday == 3) {
-                if(dayOfWeek.tue) {
+            } else if (dayOfWeekToday == 3) {
+                if (dayOfWeek.tue) {
                     return count;
                 }
-            } else if(dayOfWeekToday == 4) {
-                if(dayOfWeek.wed) {
+            } else if (dayOfWeekToday == 4) {
+                if (dayOfWeek.wed) {
                     return count;
                 }
-            } else if(dayOfWeekToday == 5) {
-                if(dayOfWeek.thu) {
+            } else if (dayOfWeekToday == 5) {
+                if (dayOfWeek.thu) {
                     return count;
                 }
-            } else if(dayOfWeekToday == 6) {
-                if(dayOfWeek.fri) {
+            } else if (dayOfWeekToday == 6) {
+                if (dayOfWeek.fri) {
                     return count;
                 }
-            } else if(dayOfWeekToday == 7) {
-                if(dayOfWeek.sat) {
+            } else if (dayOfWeekToday == 7) {
+                if (dayOfWeek.sat) {
                     return count;
                 }
             }
-        count++;
+            if (dayOfWeekToday == 7) {
+                dayOfWeekToday = 1;
+            } else {
+                dayOfWeekToday++;
+            }
+            count++;
         }
         return 0;
     }

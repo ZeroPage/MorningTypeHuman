@@ -1,7 +1,7 @@
 package org.zeropage.gdg.morningTypeHuman.view;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 
 import org.zeropage.gdg.morningTypeHuman.R;
 import org.zeropage.gdg.morningTypeHuman.controller.AlarmResultActivityController;

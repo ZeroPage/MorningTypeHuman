@@ -21,10 +21,10 @@ public class AlarmListActivity extends Activity {
         super.onResume();
         AlarmListActivityController controller = new AlarmListActivityController(this);
 
-        AlarmAddButton alarmAddButton = (AlarmAddButton)findViewById(R.id.buttonAddAlarm);
+        AlarmAddButton alarmAddButton = (AlarmAddButton) findViewById(R.id.buttonAddAlarm);
         alarmAddButton.init(controller);
 
-        AlarmListView listView = (AlarmListView)findViewById(R.id.listView);
+        AlarmListView listView = (AlarmListView) findViewById(R.id.listView);
         listView.init(controller);
     }
 }
