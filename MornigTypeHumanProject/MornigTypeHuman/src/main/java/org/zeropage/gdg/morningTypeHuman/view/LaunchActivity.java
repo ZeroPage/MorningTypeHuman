@@ -14,7 +14,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class LaunchActivity extends BaseGameActivity {
-    protected int _splashTime = 2000;
+    protected int _splashTime = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class LaunchActivity extends BaseGameActivity {
     @Override
     public void onSignInFailed() {
         setAction();
-        Toast.makeText(this,"로그인 실패! 본 앱은 Google+ 로그인이 필요합니다.", Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"본 앱은 Google+ 로그인이 필요합니다.", Toast.LENGTH_LONG).show();
     }
 
     private void setAction() {
