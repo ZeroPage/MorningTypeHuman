@@ -62,7 +62,7 @@ public class AppStatisticsManager {
             appStatistics.bestSuccessStreak = appStatistics.currentSuccessStreak;
         }
 
-        int dayOfWeek = Calendar.DAY_OF_WEEK;
+        int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
         appStatistics.dayOfWeekSucceed[dayOfWeek]++;
 
         try {
@@ -78,10 +78,10 @@ public class AppStatisticsManager {
             return;
         }
         appStatistics.totalTries++;
-        appStatistics.totalLaunched++;
+        appStatistics.totalFailed++;
         appStatistics.currentSuccessStreak = 0;
 
-        int dayOfWeek = Calendar.DAY_OF_WEEK;
+        int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
         appStatistics.dayOfWeekFailed[dayOfWeek]++;
 
         try {
