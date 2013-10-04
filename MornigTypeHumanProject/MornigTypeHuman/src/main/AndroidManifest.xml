@@ -40,7 +40,7 @@
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDzCLRPf_DNO7fnuNfjTQy-qRA75iRIwqw" />
+            android:value="AIzaSyBVMdywq9DyQcgFPA9-tNzM_DEcHD9hZtc" />
 
         <activity
             android:name="org.zeropage.gdg.morningTypeHuman.view.LaunchActivity"
@@ -75,15 +75,15 @@
         <activity
             android:name="org.zeropage.gdg.morningTypeHuman.view.AlarmEditActivity"
             android:label="@string/title_activity_alarm_edit"
-            android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
             android:name="org.zeropage.gdg.morningTypeHuman.view.CreditsActivity"
             android:label="@string/title_activity_credits"
-            android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
             android:name="org.zeropage.gdg.morningTypeHuman.view.StatisticsActivity"
-            android:label="@string/title_activity_statistics"></activity>
+            android:label="@string/title_activity_statistics" />
     </application>
 
-</manifest> <!-- android:value="AIzaSyDacKbcukmbzps1FWX46XIUk3aFgS2GHTA" />  영준이 키. --><!-- android:value="AIzaSyAahOF6FtweLdE2zrhpYwZAtOVL15ZZZXI"/> -->
+</manifest>
 
