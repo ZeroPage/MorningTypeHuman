@@ -126,7 +126,7 @@ public class FileStorage {
         ObjectInputStream ois = null;
         HashSet<String> result = null;
         try {
-            fis = new FileInputStream(appStatisticsFile);
+            fis = new FileInputStream(nameSetFile);
             ois = new ObjectInputStream(fis);
             result = (HashSet<String>) ois.readObject();
         }catch (ClassNotFoundException e){

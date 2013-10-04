@@ -27,6 +27,7 @@ public class AlarmInfoStorage {
         list.add(alarmInfo);
         set.add(alarmInfo.name);
         FileStorage.saveAlarmList(list);
+        FileStorage.saveNameSet(set);
     }
 
     public static void deleteAlarmInfo(int index) throws IOException {
@@ -36,7 +37,7 @@ public class AlarmInfoStorage {
         set.remove(list.get(index).name);
         list.remove(index);
 
-
         FileStorage.saveAlarmList(list);
+        FileStorage.saveNameSet(set);
     }
 }
