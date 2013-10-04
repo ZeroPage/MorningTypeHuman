@@ -69,8 +69,7 @@ public class LaunchActivity extends BaseGameActivity {
     }
 
     private void setAction() {
-        if(true){
-        //if(isSignedIn()) {
+        if(isSignedIn()) {
             TimerTask loginTask = new TimerTask() {
                 @Override
                 public void run() {

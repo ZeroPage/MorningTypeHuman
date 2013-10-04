@@ -6,13 +6,13 @@ import java.io.Serializable;
  * Created by rino0601 on 13. 9. 13..
  */
 public class AlarmInfo implements Serializable {
-    public static String intentKey = "alarmInfo";
+    public final static String intentKey = "alarmInfo";
     public String name;
-    public int hour;
-    public int minute;
-    public double longitude;
-    public double latitude;
-    public boolean isAlarmOn;
+    public final int hour;
+    public final int minute;
+    public final double longitude;
+    public final double latitude;
+    public final boolean isAlarmOn;
     public DayOfWeek dayOfWeek;
 
     public AlarmInfo(String name, int hour, int minute, double longitude, double latitude, boolean isAlarmOn, DayOfWeek dayOfWeek) {
