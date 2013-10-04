@@ -20,6 +20,7 @@ import org.zeropage.gdg.morningTypeHuman.model.AlarmInfo;
 import org.zeropage.gdg.morningTypeHuman.model.AlarmInfoStorage;
 import org.zeropage.gdg.morningTypeHuman.model.AlarmService;
 import org.zeropage.gdg.morningTypeHuman.model.DayOfWeek;
+import org.zeropage.gdg.morningTypeHuman.model.DuplicateNameException;
 import org.zeropage.gdg.morningTypeHuman.view.AlarmEditActivity;
 import org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmCheckBox;
 import org.zeropage.gdg.morningTypeHuman.view.alarmmanage.AlarmTimePicker;
@@ -111,12 +112,12 @@ public class AlarmEditActivityController implements View.OnClickListener, TimePi
     @Override
     public void onClick(View v) {
         // FIXME private method로 의미 분할이 필요해 보임.
+        String name;
         int viewId = v.getId();
         if (viewId == R.id.buttonEditAlarm) {
             name = editText.getEditableText().toString();
             if (name == null || name.equals("")) {
-                Toast.makeText(activity, "강의명을 입력해 주세요.", Toast.LENGTH_LONG).show();
-                return;
+                name = "강의";
             }
             if (!(dayOfWeek.mon || dayOfWeek.tue || dayOfWeek.wed || dayOfWeek.thu || dayOfWeek.fri || dayOfWeek.sat || dayOfWeek.sun)) {
                 Toast.makeText(activity, "요일을 선택해 주세요.", Toast.LENGTH_LONG).show();
@@ -125,14 +126,26 @@ public class AlarmEditActivityController implements View.OnClickListener, TimePi
 
             newAlarmInfo = new AlarmInfo(name, hour, minute, longitude, latitude, isAlarmOn, dayOfWeek);
 
-            try {
-                AlarmInfoStorage.saveAlarmInfo(newAlarmInfo);
-                AlarmInfoStorage.deleteAlarmInfo(alarmInfoToEdit);
-            } catch (IOException e) {
-                Toast.makeText(activity, "FATAL_ERROR:새 알람 목록을 저장하는데 실패.", Toast.LENGTH_LONG).show();
-                e.printStackTrace();
-                activity.finish();
+            int duplicatedCount = 0;
+            while(true) {
+                try {
+                    if(duplicatedCount != 0) {
+                        newAlarmInfo.name = name + " (" + duplicatedCount + ")";
+                    }
+                    AlarmInfoStorage.deleteAlarmInfo(alarmInfoToEdit);
+                    AlarmInfoStorage.saveAlarmInfo(newAlarmInfo);
+                    break;
+                } catch (IOException e) {
+                    Toast.makeText(activity, "FATAL_ERROR:새 알람 목록을 저장하는데 실패.", Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                    activity.finish();
+                    return;
+                } catch (DuplicateNameException e) {
+                    duplicatedCount++;
+                    e.printStackTrace();
+                }
             }
+
             Toast.makeText(activity, "알람 수정 완료", Toast.LENGTH_LONG).show();
             deactivateAlarm(oldAlarmInfo);
             if (isAlarmOn) {

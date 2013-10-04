@@ -219,7 +219,6 @@ public class AppStatisticsManager {
     }
 }
 
-
 class AppStatistics implements Serializable {
     public int totalTries;
     public int totalSucceed;

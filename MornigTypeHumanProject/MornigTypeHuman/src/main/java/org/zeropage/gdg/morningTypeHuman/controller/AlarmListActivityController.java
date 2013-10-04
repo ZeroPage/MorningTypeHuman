@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.zeropage.gdg.morningTypeHuman.R;
 import org.zeropage.gdg.morningTypeHuman.model.AlarmInfo;
@@ -32,16 +33,14 @@ public class AlarmListActivityController extends ArrayAdapter<AlarmInfo> impleme
         this.activity = activity;
         clear();
         ArrayList<AlarmInfo> alarmList = null;
+
         try {
             alarmList = AlarmInfoStorage.loadList();
         } catch (IOException e) {
-            alarmList = new ArrayList<AlarmInfo>(); // 없으면 새로 만듬.
-            try {
-                AlarmInfoStorage.saveList(alarmList);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+            Toast.makeText(activity, "Error: 리스트를 읽는데 실패하였습니다.", Toast.LENGTH_SHORT).show();
+            alarmList = new ArrayList<AlarmInfo>();
         }
+
         for (AlarmInfo alarmInfo : alarmList) {
             add(alarmInfo);
         }

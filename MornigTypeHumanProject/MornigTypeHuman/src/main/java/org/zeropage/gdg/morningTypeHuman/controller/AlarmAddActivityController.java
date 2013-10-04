@@ -16,6 +16,7 @@ import org.zeropage.gdg.morningTypeHuman.model.AlarmInfo;
 import org.zeropage.gdg.morningTypeHuman.model.AlarmInfoStorage;
 import org.zeropage.gdg.morningTypeHuman.model.AlarmService;
 import org.zeropage.gdg.morningTypeHuman.model.DayOfWeek;
+import org.zeropage.gdg.morningTypeHuman.model.DuplicateNameException;
 import org.zeropage.gdg.morningTypeHuman.view.AlarmAddActivity;
 
 import java.io.IOException;
@@ -51,25 +52,40 @@ public class AlarmAddActivityController implements TimePicker.OnTimeChangedListe
 
     @Override
     public void onClick(View view) {
+        String name;
         EditText editText = (EditText) activity.findViewById(R.id.editTextLectureName);
         Editable et = editText.getEditableText();
+
         if (et == null || et.toString().equals("")) {
-            Toast.makeText(activity, "강의명을 입력해 주세요.", Toast.LENGTH_LONG).show();
-            return;
+            name = "강의";
+        } else {
+            name = et.toString();
         }
-        String name = et.toString();
+
         if (!(dayOfWeek.mon || dayOfWeek.tue || dayOfWeek.wed || dayOfWeek.thu || dayOfWeek.fri || dayOfWeek.sat || dayOfWeek.sun)) {
             Toast.makeText(activity, "요일을 선택해 주세요.", Toast.LENGTH_LONG).show();
             return;
         }
 
         AlarmInfo newAlarm = new AlarmInfo(name, hour, minute, longitude, latitude, isAlarmOn, dayOfWeek);
-        try {
-            AlarmInfoStorage.saveAlarmInfo(newAlarm);
-        } catch (IOException e) {
-            Toast.makeText(activity, "FATAL_ERROR:새 알람 목록을 저장하는데 실패.", Toast.LENGTH_LONG).show();
-            return;
+
+        int duplicatedCount = 0;
+        while(true) {
+            try {
+                if(duplicatedCount != 0) {
+                    newAlarm.name = name + " (" + duplicatedCount + ")";
+                }
+                AlarmInfoStorage.saveAlarmInfo(newAlarm);
+                break;
+            } catch (IOException e) {
+                Toast.makeText(activity, "FATAL_ERROR:새 알람 목록을 저장하는데 실패.", Toast.LENGTH_LONG).show();
+                return;
+            } catch (DuplicateNameException e) {
+                duplicatedCount++;
+                e.printStackTrace();
+            }
         }
+
         if (isAlarmOn) {
             activateAlarm(newAlarm);
         }
