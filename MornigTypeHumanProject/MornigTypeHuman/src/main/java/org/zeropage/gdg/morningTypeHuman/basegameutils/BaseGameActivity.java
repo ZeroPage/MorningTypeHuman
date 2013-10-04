@@ -123,6 +123,15 @@ public abstract class BaseGameActivity extends FragmentActivity implements
     @Override
     protected void onStop() {
         super.onStop();
+//        mHelper.onStop();
+    }
+
+    /**
+     * 우리가 임의로 추가한 코드.
+     */
+    @Override
+    protected void onRestart() {
+        super.onRestart();
         mHelper.onStop();
     }
 

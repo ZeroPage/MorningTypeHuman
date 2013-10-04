@@ -35,17 +35,23 @@ public class AlarmResultTextView extends TextView implements LocationListener {
 
     private void create(Context context) {
         this.context = context;
-        setText("위치정보를 읽는 중...");
+        setText("위치정보를 읽는 중");
     }
 
     public void init(AlarmResultActivityController controller) {
         this.controller = controller;
         LocationManager manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 1, this);
+        manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,100,1,this);
     }
 
     @Override
     public void onLocationChanged(Location location) {
+        if(location.getProvider().equals(LocationManager.NETWORK_PROVIDER)){
+            setText(getText()+".");
+            return;
+        }
+
         if (controller.isValid(location.getLatitude(), location.getLongitude())) {
             AppStatisticsManager.alarmSucceed(context);
             setText("성공!!!");

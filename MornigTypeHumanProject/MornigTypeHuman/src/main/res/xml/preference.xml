@@ -13,8 +13,12 @@
                 android:title = "통계 보기"
                 android:summary="통계를 봅니다." />
         <Preference
-                android:key = "credits"
-                android:title = "제작자"
-                android:summary = "제작자 정보를 봅니다." />
+                android:key = "playservice"
+                android:title = "구글 플레이 서비스"
+                android:summary = "구글 플레이 서비스를 봅니다." />
+        <Preference
+            android:key = "credits"
+            android:title = "제작자"
+            android:summary = "제작자 정보를 봅니다." />
     </PreferenceCategory>
 </PreferenceScreen>

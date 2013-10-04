@@ -3,6 +3,8 @@ package org.zeropage.gdg.morningTypeHuman.model;
 import android.content.Context;
 import android.widget.Toast;
 
+import org.zeropage.gdg.morningTypeHuman.view.LaunchActivity;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class AppStatisticsManager {
             try {
                 FileStorage.saveAppStats(appStatistics);
                 Toast.makeText(context, "새 통계를 생성합니다.", Toast.LENGTH_SHORT).show();
+                LaunchActivity.callAPI().unlockAchievement("CgkI9pXH2dkfEAIQAQ");
             } catch (IOException e) {
                 Toast.makeText(context, "통계 파일 접근을 실패하였습니다. 통계 기능에 제한이 생깁니다.", Toast.LENGTH_SHORT).show();
                 return;
@@ -38,7 +41,7 @@ public class AppStatisticsManager {
     }
 
     public static void appLaunched(Context context) {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return;
         }
         appStatistics.totalLaunched++;
@@ -52,13 +55,13 @@ public class AppStatisticsManager {
     }
 
     public static void alarmSucceed(Context context) {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return;
         }
         appStatistics.totalTries++;
         appStatistics.totalSucceed++;
         appStatistics.currentSuccessStreak++;
-        if(appStatistics.currentSuccessStreak > appStatistics.bestSuccessStreak) {
+        if (appStatistics.currentSuccessStreak > appStatistics.bestSuccessStreak) {
             appStatistics.bestSuccessStreak = appStatistics.currentSuccessStreak;
         }
 
@@ -74,7 +77,7 @@ public class AppStatisticsManager {
     }
 
     public static void alarmFailed(Context context) {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return;
         }
         appStatistics.totalTries++;
@@ -93,7 +96,7 @@ public class AppStatisticsManager {
     }
 
     public static void visitStatistics(Context context) {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return;
         }
         appStatistics.statisticsVisited++;
@@ -106,56 +109,56 @@ public class AppStatisticsManager {
     }
 
     public static int getTotalLaunched() {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return 0;
         }
         return appStatistics.totalLaunched;
     }
 
     public static int getTotalTries() {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return 0;
         }
         return appStatistics.totalTries;
     }
 
     public static int getTotalSucceed() {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return 0;
         }
         return appStatistics.totalSucceed;
     }
 
     public static int getTotalFailed() {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return 0;
         }
         return appStatistics.totalFailed;
     }
 
     public static int getStatisticsVisited() {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return 0;
         }
         return appStatistics.statisticsVisited;
     }
 
     public static int getCurrentSuccessStreak() {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return 0;
         }
-            return appStatistics.currentSuccessStreak;
+        return appStatistics.currentSuccessStreak;
     }
 
     public static int getBestSuccessStreak() {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return 0;
         }
         return appStatistics.bestSuccessStreak;
     }
 
     public static int getDayOfWeekSucceed(int dayOfWeek) {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return 0;
         }
 
@@ -163,7 +166,7 @@ public class AppStatisticsManager {
     }
 
     public static int getDayOfWeekFailed(int dayOfWeek) {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return 0;
         }
 
@@ -171,14 +174,14 @@ public class AppStatisticsManager {
     }
 
     public static Date getFirstLaunchedDate() {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return new Date(0);
         }
         return appStatistics.firstLaunchedDate;
     }
 
     public static Date getLastLaunchedDate() {
-        if(!isAvailable) {
+        if (!isAvailable) {
             return new Date(0);
         }
         return appStatistics.lastLaunchedDate;
@@ -204,13 +207,13 @@ public class AppStatisticsManager {
         statisticsValues.add(new StatisticsValue("마지막 실행 날짜", getLastLaunchedDate().toString()));
         statisticsValues.add(new StatisticsValue("통계 방문 횟수", String.valueOf(getStatisticsVisited())));
 
-        for(int i = 0; i < 7; i++) {
+        for (int i = 0; i < 7; i++) {
             temp += String.valueOf(getDayOfWeekSucceed(i + 1));
         }
         statisticsValues.add(new StatisticsValue("요일별 성공 횟수(일~토)", temp));
 
         temp = "";
-        for(int i = 0; i < 7; i++) {
+        for (int i = 0; i < 7; i++) {
             temp += String.valueOf(getDayOfWeekFailed(i + 1));
         }
         statisticsValues.add(new StatisticsValue("요일별 실패 횟수(일~토)", temp));
@@ -227,7 +230,7 @@ class AppStatistics implements Serializable {
     public int statisticsVisited;
     public int currentSuccessStreak;
     public int bestSuccessStreak;
-    
+
     public int[] dayOfWeekSucceed = new int[8];
     public int[] dayOfWeekFailed = new int[8];
 

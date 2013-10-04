@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.util.Log;
 
 import org.zeropage.gdg.morningTypeHuman.R;
 
@@ -17,8 +18,8 @@ public class SettingActivity extends PreferenceActivity {
 
         Preference statsPreference = findPreference("stats");
         Preference creditsPreference = findPreference("credits");
-
-        if (statsPreference == null || creditsPreference == null) {
+        Preference playServicePreference = findPreference("playservice");
+        if (statsPreference == null || creditsPreference == null || playServicePreference == null) {
             throw new AssertionError();
         }
 
@@ -27,6 +28,17 @@ public class SettingActivity extends PreferenceActivity {
             public boolean onPreferenceClick(Preference preference) {
                 Intent intent = new Intent(SettingActivity.this, StatisticsActivity.class);
                 startActivity(intent);
+                return false;
+            }
+        });
+
+        playServicePreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                if (LaunchActivity.callAPI().isConnected()) {
+                    Log.d("KEYKEY", "asdfasdfasdfasdfasdfasdfasdfasdf");
+                    startActivityForResult(LaunchActivity.callAPI().getAchievementsIntent(), 1002);
+                }
                 return false;
             }
         });
