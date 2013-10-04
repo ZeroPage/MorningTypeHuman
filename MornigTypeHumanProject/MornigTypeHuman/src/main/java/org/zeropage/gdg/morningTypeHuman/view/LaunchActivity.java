@@ -7,9 +7,13 @@ import android.widget.Toast;
 import org.zeropage.gdg.morningTypeHuman.R;
 import org.zeropage.gdg.morningTypeHuman.basegameutils.BaseGameActivity;
 import org.zeropage.gdg.morningTypeHuman.controller.LaunchActivityController;
+import org.zeropage.gdg.morningTypeHuman.model.AlarmInfo;
 import org.zeropage.gdg.morningTypeHuman.model.AppStatisticsManager;
 import org.zeropage.gdg.morningTypeHuman.model.FileStorage;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -23,6 +27,28 @@ public class LaunchActivity extends BaseGameActivity {
 
         // init here.
         FileStorage.init(this);
+        try {
+            FileStorage.loadAlarmList();
+        } catch (IOException e) {
+            try {
+                FileStorage.saveAlarmList(new ArrayList<AlarmInfo>());
+            } catch (IOException e2) {
+                Toast.makeText(this, "Error: 알람 리스트를 생성하는데 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        }
+        try {
+            FileStorage.loadNameSet();
+        } catch (IOException e) {
+            try {
+                FileStorage.saveNameSet(new HashSet<String>());
+            } catch (IOException e2) {
+                Toast.makeText(this, "Error: 알람 이름 리스트를 생성하는데 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        }
+
+
         AppStatisticsManager.init(this);
         AppStatisticsManager.appLaunched(this);
 
