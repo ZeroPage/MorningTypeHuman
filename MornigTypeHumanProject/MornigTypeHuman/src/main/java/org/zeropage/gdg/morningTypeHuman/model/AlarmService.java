@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -23,28 +24,28 @@ public class AlarmService extends BroadcastReceiver {
         // 어느 인텐트가 날아오느냐에 따라 달렸지만,
         // 위치 정보를 체크. 다이얼로그든, 액티비티든 소환!
 
-        AlarmInfo alarmInfo = (AlarmInfo) fromIntent.getExtras().get(AlarmInfo.intentKey);
+        Bundle extras = fromIntent.getExtras();
+        AlarmInfo alarmInfo = (AlarmInfo) extras.get(AlarmInfo.intentKey);
         Intent intent = new Intent(context, AlarmResultActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(AlarmInfo.intentKey, alarmInfo);
         context.startActivity(intent);
     }
 
-    public void enableAlarm(Context context, AlarmInfo newAlarm) throws IOException {
+    public void enableAlarm(Context context, AlarmInfo newAlarm) {
         // 알람을 받을 시간을, 넘겨 받은 정보를 가지고 설정.
+        Calendar cal_now = Calendar.getInstance(); // 지금 이 순간.
         Calendar cal_alarm = Calendar.getInstance();
         cal_alarm.set(Calendar.HOUR_OF_DAY, newAlarm.hour);//set the alarm time
         cal_alarm.set(Calendar.MINUTE, newAlarm.minute);
-        cal_alarm.set(Calendar.SECOND, 0);
+        cal_alarm.set(Calendar.SECOND, 0); // 알람이 울려야 하는 시간(시간만, 날짜는 안 정해짐.)
 
-        Calendar cal_now = Calendar.getInstance();
-        if (cal_alarm.before(cal_now)) {//if its in the past increment
+        if (cal_alarm.before(cal_now)) { // 오후 6시에, 오후 5시 알람을 맞춘 경우를 대비한 처리.
             cal_now.add(Calendar.DATE, 1);
         }
 
-        int dayDifference;
-        dayDifference = getDayDifference(cal_now.DAY_OF_WEEK, newAlarm.dayOfWeek);
-        cal_alarm.add(Calendar.DATE, dayDifference);
+        int dayDifference = getDayDifference(cal_now.get(Calendar.DAY_OF_WEEK), newAlarm.dayOfWeek);
+        cal_alarm.add(Calendar.DATE, dayDifference); // 날짜도 정해졌음.
 
         //For Debugging.
         Toast.makeText(context, cal_alarm.getTime().toString(), Toast.LENGTH_LONG).show();
@@ -53,9 +54,6 @@ public class AlarmService extends BroadcastReceiver {
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent sender = getPendingIntent(context, newAlarm);
         am.set(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(), sender);
-        // 알람 매니저에 알람을 등록
-//        am.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),(7*24*60*60*1000),sender);
-//        // ㄴ '등록 시점'으로 부터 일주일 동안 반복하는 코드 완성.
     }
 
     public void disableAlarm(Context context, AlarmInfo newAlarm) throws IOException {

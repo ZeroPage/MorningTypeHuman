@@ -30,9 +30,9 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <receiver
-            android:name="org.zeropage.gdg.morningTypeHuman.model.AlarmService"
-            android:process=":remote" />
+        <receiver android:name="org.zeropage.gdg.morningTypeHuman.model.AlarmService" />
+        <!-- android:process=":remote" /> -->
+
         <!-- google game API-->
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"

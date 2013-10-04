@@ -100,11 +100,7 @@ public class AlarmAddActivityController implements TimePicker.OnTimeChangedListe
 
     private void activateAlarm(AlarmInfo newAlarm) {
         AlarmService alarmService = new AlarmService();
-        try {
-            alarmService.enableAlarm(activity, newAlarm);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        alarmService.enableAlarm(activity, newAlarm);
     }
 
 

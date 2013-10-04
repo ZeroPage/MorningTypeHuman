@@ -19,12 +19,12 @@ public class AlarmResultActivityController {
         this.activity = activity;
         this.alarm = alarm;
 
-        AlarmService alarmService = new AlarmService();
-        try {
-            alarmService.enableAlarm(this.activity, this.alarm);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        AlarmService alarmService = new AlarmService();
+//        try {
+//            alarmService.enableAlarm(this.activity, this.alarm);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public boolean isValid(double latitude, double longitude) {
