@@ -1,9 +1,19 @@
 <resources>
-    <!-- your app's app ID! -->
+    <!-- for DEBUG
     <string name="app_id">1089230457590</string>
-    <!-- achievement ID -->
     <string name="achievement_first">CgkI3ojdsvoZEAIQAg</string>
     <string name="achievement_20">CgkI3ojdsvoZEAIQAw</string>
-    <!-- leaderboard ID -->
     <string name="leaderboard_bounces">CgkI3ojdsvoZEAIQBA</string>
+    -->
+
+    <!-- for DEPLOY -->
+    <string name="app_id">73751803742</string>
+    <string name="achievement_Welcome">CgkI3u7M35ICEAIQAQ</string>
+    <string name="achievement_FirstAlarm">CgkI3u7M35ICEAIQAg</string>
+    <string name="achievement_OnTime">CgkI3u7M35ICEAIQAw</string>
+    <string name="achievement_ReadingHistory">CgkI3u7M35ICEAIQBA</string>
+    <string name="achievement_DayJob">CgkI3u7M35ICEAIQBQ</string>
+
+    <string name="leaderboard_bounces">CgkI3ojdsvoZEAIQBA</string>
+
 </resources>

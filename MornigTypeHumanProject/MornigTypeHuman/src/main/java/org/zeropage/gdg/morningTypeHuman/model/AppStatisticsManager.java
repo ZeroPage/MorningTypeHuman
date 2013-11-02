@@ -1,8 +1,10 @@
 package org.zeropage.gdg.morningTypeHuman.model;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.widget.Toast;
 
+import org.zeropage.gdg.morningTypeHuman.R;
 import org.zeropage.gdg.morningTypeHuman.view.LaunchActivity;
 
 import java.io.IOException;
@@ -31,7 +33,8 @@ public class AppStatisticsManager {
             try {
                 FileStorage.saveAppStats(appStatistics);
                 Toast.makeText(context, "새 통계를 생성합니다.", Toast.LENGTH_SHORT).show();
-                LaunchActivity.callAPI().unlockAchievement("CgkI9pXH2dkfEAIQAQ");
+                Resources resources = context.getResources();
+                LaunchActivity.callAPI().unlockAchievement(resources.getString(R.string.achievement_Welcome));
             } catch (IOException e) {
                 Toast.makeText(context, "통계 파일 접근을 실패하였습니다. 통계 기능에 제한이 생깁니다.", Toast.LENGTH_SHORT).show();
                 return;
@@ -74,6 +77,8 @@ public class AppStatisticsManager {
             Toast.makeText(context, "통계 저장을 실패하였습니다.", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
+        Resources resources = context.getResources();
+        LaunchActivity.callAPI().unlockAchievement(resources.getString(R.string.achievement_OnTime));
     }
 
     public static void alarmFailed(Context context) {
@@ -106,6 +111,8 @@ public class AppStatisticsManager {
             Toast.makeText(context, "통계 저장을 실패하였습니다.", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
+        Resources resources = context.getResources();
+        LaunchActivity.callAPI().unlockAchievement(resources.getString(R.string.achievement_ReadingHistory));
     }
 
     public static int getTotalLaunched() {
